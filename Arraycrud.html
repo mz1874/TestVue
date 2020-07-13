@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript" src="js/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <input v-model="text" spellcheck="请输入"> <button @click="search"> 点击搜索</button>
+        <br/>
+        <button @click="clickMe">点击我 增加一个元素</button>
+        <ul>
+            <li v-for="(data,index) in personArr">
+                {{data}} -- <button @click="remove(data)">删除</button> <button @click="update(index,data)">修改</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                personArr : [
+                    {
+                        id : 1,
+                        name:"张三",
+                        age : 18
+                    },
+                    {
+                        id : 2,
+                        name: "李四",
+                        age : 19
+                    }
+
+                ],
+                text: '王五'
+            },
+            methods:{
+                clickMe : function() {
+                   this.personArr.push(
+                       {
+                           id : 3,
+                           name : "王五",
+                           age : 20
+                       }
+                   )
+                },
+                remove(index){
+                    index.id = null,
+                        this.personArr = this.personArr.filter(f=>{
+                            return f.id != null
+                        })
+                },
+                update(index,data) {
+                    let per = data;
+                    per.name = '我是修改后的数据',
+                    this.personArr[index] == per
+                },
+                search(){
+                    this.personArr = this.personArr.filter(f=>{
+                       return f.name == this.text
+                    })
+                }
+
+            }
+        })
+    </script>
+</body>
+</html>

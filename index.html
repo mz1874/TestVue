@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id='box'>
+			{{name}}
+			<hr/>
+			{{buttons}}
+			<hr/>
+			<div v-html = "buttons">
+				
+			</div>
+			<hr/>
+			<p v-show="isShow">v- show 决定是否隐藏</p>
+			<hr/>
+			<p v-if= "testIf">v- if 是否在dom 创建创建</p>
+		</div>
+		
+		
+		
+		<script>
+			new Vue({
+				el:'#box',
+				data: {
+					name: "张三",
+					buttons : "<b>v - html  我是一段文本</b>",
+					isShow: false,
+					testIf : false
+				}
+			})
+		</script>
+		
+		
+	</body>
+</html>

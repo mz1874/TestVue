@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript" src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <button @click="isActive">切换</button>
+
+    <!--<p v-if="show">显示</p>-->
+    <!--<p v-else>隐藏</p>-->
+
+    <ul v-if="show">
+        <li v-for="(data,index) in personArr" key="data.id">
+            {{data.name}} -- {{data.age}}  -- index {{index}}
+            <p v-for="(val,key) in data">
+               value {{val}}---- {{key}}
+            </p>
+        </li>
+    </ul>
+    <div v-else>
+        购物车空空如也
+    </div>
+
+</div>
+
+<script>
+    const vue = new Vue({
+        el: "#app",
+        data: {
+            show: false,
+            personArr: []
+        },
+        methods: {
+            aa() {
+                this.show = !this.show
+            },
+            isActive: function () {
+                if (this.personArr.length == 0) {
+                    this.personArr = [
+                        {id:0,name: "张三", age: 18},
+                        {id:1,name: "李四", age: 19},
+                        {id:2,name: "王五", age: 20},
+                    ]
+                } else {
+                    this.personArr = []
+                }
+                this.show = !this.show
+            }
+        }
+    })
+</script>
+</body>
+</html>

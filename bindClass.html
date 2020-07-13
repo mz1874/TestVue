@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<link href="css/testBindClass.css" type="text/css" rel="stylesheet"></link>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id='box'>
+			<button @click="handClick()">点击我</button>
+			<div :class="isred? 'red':'black'">1111</div>
+
+			<div :class="classObj">动态绑定css</div>
+		</div>
+
+
+
+		<script>
+			new Vue({
+				el:'#box',
+				data: {
+					isred:true,
+					/*动态绑定css*/
+					classObj:{
+						red:true,
+						black:true
+					}
+				},
+				methods:{
+					handClick(){
+						this.isred = !this.isred
+					}
+				}
+			})
+		</script>
+
+
+	</body>
+</html>
